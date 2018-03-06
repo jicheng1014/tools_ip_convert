@@ -1,4 +1,4 @@
-# 基于 *纯真网络(qqwry)* 的 ip 地理查询
+# 基于 **纯真网络(qqwry)** 的 ip 地理查询
 
 ## 简介
 
@@ -18,21 +18,33 @@
 - pre: ruby 2.3.0 +
 - git clone 
 - bundle install
-- puma -e production
+- puma -e production   (或者 -p 3000 端口号3000,  默认 9292)
 
 ### 基于 `docker`
 
-``
+```
+docker run --restart=always --name tools_ip_convert -d -p 3000:9292  atpking/tools_ip_convert
+```
 
 ## ip 库
 
 元数据 https://github.com/xiaosuo/qqwry, 它采集自 http://www.cz88.net
 
+### 更新 ip 库
+
+- 直接替换 qqwry.dat 文件  适用于直接启动
+- docker -v 挂载qqwry.dat 到 /home 目录
+
+
 ## 使用方法
 
-get 请求 对应的根目录, 传参 ip 如 
+get 请求 对应的根目录, 传参 ip 
 
-`curl http://localhost:4567?ip=8.8.8.8`
+如 
+
+```
+curl http://localhost:9292?ip=8.8.8.8
+```
 
 返回对应的json
 
@@ -48,6 +60,9 @@ json 的含义如下所所示
 |---|---|---|
 | answer | 是否正确返回 | true or false, 查询失败时(ip 格式,或者没查到信息) 返回false |
 | main_location | 返回主要地区 | 国内为省级, 国外则返回 qqwry的原始数据
+|location_raw| 地点的原始值 | qqwry 的原始值 
+| markup | 具体备注 | | 
+
 
 
 

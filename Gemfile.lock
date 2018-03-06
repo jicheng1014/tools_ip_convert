@@ -5,6 +5,7 @@ GEM
     bindata (2.4.2)
     multi_json (1.13.1)
     mustermann (1.0.2)
+    puma (3.11.2)
     qqwry (0.0.3)
       bindata
     rack (2.0.4)
@@ -28,6 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  puma
   qqwry
   sinatra
   sinatra-contrib
