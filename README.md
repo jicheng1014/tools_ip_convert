@@ -23,7 +23,7 @@
 ### 基于 `docker`
 
 ```
-docker run --restart=always --name tools_ip_convert -d -p 3000:9292  atpking/tools_ip_convert
+docker run --rm  -d -p 3000:9292  atpking/tools_ip_convert
 ```
 
 ## ip 库
@@ -60,7 +60,7 @@ json 的含义如下所所示
 |---|---|---|
 | answer | 是否正确返回 | true or false, 查询失败时(ip 格式,或者没查到信息) 返回false |
 | main_location | 返回主要地区 | 国内为省级, 国外则返回 qqwry的原始数据
-|location_raw| 地点的原始值 | qqwry 的原始值 
+|location_raw| 地点的原始值 | qqwry 的原始值 
 | markup | 具体备注 | | 
 
 
