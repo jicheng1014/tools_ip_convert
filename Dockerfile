@@ -1,7 +1,9 @@
 FROM ruby:2.4
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
+ADD docker_config/sources.list /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get install -y vim curl htop
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+
 WORKDIR /home
 RUN gem install bundler
 ADD Gemfile .

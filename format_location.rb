@@ -9,7 +9,7 @@ module FormatLocation
       init_data
       # ip 校验 符合正则
       return failure_result unless ip_correct?(ip)
-      data = @db.query(ip)
+      data = QQWry::Database.new('qqwry.dat').query(ip)
       return failure_result if data.nil?
       main_location = format_province(data.country)
       IpAddressResult.new(answer: true,
@@ -53,7 +53,6 @@ module FormatLocation
       @provinces_abbr_dict ||= Hash[@provinces_standard.map do |s|
         [s.gsub(/市|省|自治区|回族|维吾尔|特别行政区|壮族/, ''), s]
       end].freeze
-      @db ||= QQWry::Database.new('qqwry.dat')
     end
   end
 end
